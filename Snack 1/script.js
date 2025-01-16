@@ -2,7 +2,7 @@
 const biciCorsa = [
     {
         'nome': "bici#1",
-        'peso': 5.5,
+        'peso': 1,
     },
     {
         'nome': "bici#2",
@@ -46,23 +46,20 @@ const biciCorsa = [
 const pesoMinore = document.getElementById("peso")
 const pesoENome = document.getElementById("bici")
 
-// creo un nuovo array dove metto solo i pesi del array
-const numeri = []
-for(let i = 0; i < biciCorsa.length; i++){
-    numeri.push(biciCorsa[i].peso)
-}
-console.log(numeri);
+    // creo una variabile con il primo oggetto del array
+    let oggettoMinim = biciCorsa[0]; 
+  
+    // Ciclo per confrontare tutti gli oggetti
+    for (let i = 0; i < biciCorsa.length; i++) {
 
-// tramite math.min trovo il numero piu piccolo del array
-const numeroPiuPiccolo = Math.min(...numeri)
-
-pesoMinore.innerHTML = `La bici che pese meno ha: ${numeroPiuPiccolo} kg`
-
-// tramite find trovo il nome della bici piu leggera
-const oggettoMinimo = biciCorsa.find(obj => obj.peso === numeroPiuPiccolo)
-
-pesoENome.innerHTML = JSON.stringify(oggettoMinimo)
-
-
-
-
+    // Stampa l'oggetto con il numero più piccolo nella pagina
+    if (biciCorsa[i].peso < oggettoMinim.peso) {
+        oggettoMinim = biciCorsa[i];
+        console.log(oggettoMinim);
+        pesoMinore.innerHTML = `La ${oggettoMinim.nome} e la bici piu leggera con un peso di ${oggettoMinim.peso} kg`
+    }else{
+        pesoMinore.innerHTML = `La ${oggettoMinim.nome} e la bici piu leggera con un peso di ${oggettoMinim.peso} kg`
+    }
+  }
+  
+  
